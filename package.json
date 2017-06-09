@@ -1,0 +1,24 @@
+{
+  "name": "xhr-js-jquery",
+  "version": "1.0.0",
+  "description": "Probando AJAX con JavaScript\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C y aprendiendo AXAJ con JavaScript",
+  "main": "server.js",
+  "scripts": {
+    "test": "\u001b[B"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MimiArismendi/AJAX-con-Javascript.git"
+  },
+  "keywords": [
+    "js",
+    "xhr",
+    "json"
+  ],
+  "author": "Noemi Arismendi <noemiarismendi.cc@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MimiArismendi/AJAX-con-Javascript/issues"
+  },
+  "homepage": "https://github.com/MimiArismendi/AJAX-con-Javascript#readme"
+}
