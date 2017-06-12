@@ -10,7 +10,7 @@ var cargarPokemones = function() {
     crearPokemons(pokemons);
   });
 };
-var crearPokemons = function(pokemons) {
+/*var crearPokemons = function(pokemons) {
   pokemons.forEach(function(pokemon) {
     var $li = $("<li />");
     var $div = $("<div />");
@@ -21,12 +21,43 @@ var crearPokemons = function(pokemons) {
     $ul.append($li);
     $ul.append($div);
     $div.append($img);
-//    $img.src="https://dummyimage.com/150x50/000/fff"
     $li.attr("data-url", pokemon.url);
     $li.addClass("pokemon");
     $li.text(pokemon.name);
 
   });
+};*/
+
+//en este ca    so, comienza en 1 porque las imagenes estan enumeradas a partir de ese numero
+var contadorImagen = 1; 
+
+function crearPokemons(pokemons) {
+    var $section = $("#pokemons");
+
+    pokemons.forEach(function (pokemon) {
+        
+        var $img = $("<img />");
+        var $div = $("<div />");
+        var $p = $("<p />");
+        
+       $section.addClass("center-align");
+        
+       $div.addClass("pokemon center-align col s3");
+        $div.attr('data-url', pokemon.url);
+        
+       $img.attr("src" ,'img/' + contadorImagen + ".jpg");
+        //$img.attr("id" ,'imgPokemon');
+        $img.addClass("center-align responsive-img");
+        
+       $p.text(pokemon.name);
+        $p.addClass("center-align");
+        
+       $section.append($div);
+        $div.append($img);
+        $div.append($p);
+        
+       contadorImagen++;
+    });
 };
 
 var cargarDetallesPokemones = function() {
@@ -40,6 +71,7 @@ var cargarDetallesPokemones = function() {
       mostrarDetallePokemon(colorPokemon, habitatPokemon, shapePokemon, generaPokemon);
     });
 };
+
 
 var mostrarDetallePokemon = function(colorPokemon, habitatPokemon, shapePokemon, generaPokemon) {
     var $detallePokemonContenedor = $('#DetallePokemon');
