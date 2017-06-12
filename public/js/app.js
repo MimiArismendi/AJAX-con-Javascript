@@ -1,6 +1,7 @@
 var cargarPagina = function() {
     cargarPokemones();
     $(document).on("click", ".pokemon", cargarDetallesPokemones);
+    $('.modal').modal();
 };
 
 var cargarPokemones = function() {
@@ -29,7 +30,9 @@ var cargarPokemones = function() {
 };*/
 
 //en este ca    so, comienza en 1 porque las imagenes estan enumeradas a partir de ese numero
-var contadorImagen = 1; 
+var contadorImagen = 1;
+/*var contadorHref = 1;
+var contadorModal = 1;*/
 
 function crearPokemons(pokemons) {
     var $section = $("#pokemons");
@@ -44,9 +47,10 @@ function crearPokemons(pokemons) {
         
        $div.addClass("pokemon center-align col s3");
         $div.attr('data-url', pokemon.url);
+        $div.attr("data-target","modal1");
         
        $img.attr("src" ,'img/' + contadorImagen + ".jpg");
-        //$img.attr("id" ,'imgPokemon');
+        //$img.attr("data-target" ,'modal1');
         $img.addClass("center-align responsive-img");
         
        $p.text(pokemon.name);
@@ -61,20 +65,27 @@ function crearPokemons(pokemons) {
 };
 
 var cargarDetallesPokemones = function() {
-  var url = $(this).data('url');
-  console.log(url);
+var url = $(this).data('url');
   $.getJSON(url, function(response){
+    var nombre = response.name;
     var colorPokemon = response.color.name;
     var habitatPokemon = response.habitat.name;
     var shapePokemon = response.shape.name;
     var generaPokemon = response.genera[0].genus;
-      mostrarDetallePokemon(colorPokemon, habitatPokemon, shapePokemon, generaPokemon);
+      
+    $("#name").text(nombre);
+    $("#color").text(colorPokemon);
+    $("#habitat").text(habitatPokemon);
+    $("#shape").text(shapePokemon);
+    $("#genera").text(generaPokemon);
+      
+      /*mostrarDetallePokemon(colorPokemon, habitatPokemon, shapePokemon, generaPokemon);*/
     });
 };
 
 
-var mostrarDetallePokemon = function(colorPokemon, habitatPokemon, shapePokemon, generaPokemon) {
-    var $detallePokemonContenedor = $('#DetallePokemon');
+/*var mostrarDetallePokemon = function(colorPokemon, habitatPokemon, shapePokemon, generaPokemon) {
+    var $detallePokemonContenedor = $('#modal1');
         $detallePokemonContenedor.html(
         plantilla.replace('__color__', colorPokemon)
                 .replace('__habitat__', habitatPokemon)
@@ -87,8 +98,11 @@ var plantilla = '<h2>Datos Pokemon</h2>' +
   '<p><strong>Color: </strong>__color__</p>' +
   '<p><strong>Habitat: </strong>__habitat__</p>' +
   '<p><strong>Shape: </strong>__shape__</p>' +
-  '<p><strong>Genera: </strong>__genera__</p>';
+  '<p><strong>Genera: </strong>__genera__</p>';*/
 
+function crearModal(){
+    
+}
 $(document).ready(cargarPagina);
 
 
