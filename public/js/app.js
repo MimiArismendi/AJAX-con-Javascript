@@ -48,6 +48,7 @@ function crearPokemons(pokemons) {
        $div.addClass("pokemon center-align col s3");
         $div.attr('data-url', pokemon.url);
         $div.attr("data-target","modal1");
+        $div.attr("data-src",'img/' + contadorImagen + ".jpg")
         
        $img.attr("src" ,'img/' + contadorImagen + ".jpg");
         //$img.attr("data-target" ,'modal1');
@@ -66,6 +67,12 @@ function crearPokemons(pokemons) {
 
 var cargarDetallesPokemones = function() {
 var url = $(this).data('url');
+var src = $(this).data('src');
+var imagenModal = $("<img />");
+    
+    imagenModal.attr("src",src);
+    imagenModal.addClass("imagenModal");
+    
   $.getJSON(url, function(response){
     var nombre = response.name;
     var colorPokemon = response.color.name;
@@ -78,6 +85,7 @@ var url = $(this).data('url');
     $("#habitat").text(habitatPokemon);
     $("#shape").text(shapePokemon);
     $("#genera").text(generaPokemon);
+    $("#img").html(imagenModal);
       
       /*mostrarDetallePokemon(colorPokemon, habitatPokemon, shapePokemon, generaPokemon);*/
     });
@@ -100,9 +108,7 @@ var plantilla = '<h2>Datos Pokemon</h2>' +
   '<p><strong>Shape: </strong>__shape__</p>' +
   '<p><strong>Genera: </strong>__genera__</p>';*/
 
-function crearModal(){
-    
-}
+
 $(document).ready(cargarPagina);
 
 
